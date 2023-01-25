@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 '''
@@ -17,9 +18,13 @@ class Room(models.Model):
 
 class ToDoList(models.Model):
     # this is a list of Item objects, I need to figure out how to get this done in database, and get the admidmin fixed
-    fullList = []
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    numberOfItems = models.IntegerField()
 
 class Item(models.Model):
+    ToDoList = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
+    #   not neccisary, as probs ppl won't be able to delete todo list, maybe they can, perhaps a main one they can't...
+
     # don't have this include a model, just have it include self,,, so its not a database shit, rather just an item....
     # todolist = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
     text = models.CharField(max_length=300)
