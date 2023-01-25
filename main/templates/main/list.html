@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div>
+    <div>
+        {% for item in toDo %}
+            <div>
+                <h5>{{item.id}} -- {{item.thing}}</h5>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
