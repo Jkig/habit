@@ -16,8 +16,8 @@ class Room(models.Model):
 '''
 
 class ToDoList(models.Model):
-    fullList = [] # this is a list of Item objects, I need to figure out how to get this done in database, and get the admidmin fixed
-
+    # this is a list of Item objects, I need to figure out how to get this done in database, and get the admidmin fixed
+    fullList = []
 
 class Item(models.Model):
     # don't have this include a model, just have it include self,,, so its not a database shit, rather just an item....
