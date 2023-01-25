@@ -18,18 +18,18 @@ class Room(models.Model):
 
 class ToDoList(models.Model):
     # this is a list of Item objects, I need to figure out how to get this done in database, and get the admidmin fixed
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE, null=True)
+    # numberOfItems = models.IntegerField(default=0) # set this to a thing,,, or remove?
 
-    numberOfItems = models.IntegerField(default=0)
 
 class Item(models.Model):
-    ToDoList = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
+    ToDoList = models.ForeignKey(ToDoList, on_delete=models.CASCADE, null=True)
     #   not neccisary, as probs ppl won't be able to delete todo list, maybe they can, perhaps a main one they can't...
 
     # don't have this include a model, just have it include self,,, so its not a database shit, rather just an item....
     # todolist = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
-    text = models.CharField(max_length=300)
-    complete = models.BooleanField()
+    text = models.CharField(max_length=300, null=True, blank=True)
+    complete = models.BooleanField(default=False)
     startTime = models.DateTimeField(null=True)
     endTime = models.DateTimeField(null=True)
 
