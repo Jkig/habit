@@ -19,7 +19,8 @@ class Room(models.Model):
 class ToDoList(models.Model):
     # this is a list of Item objects, I need to figure out how to get this done in database, and get the admidmin fixed
     user = models.ForeignKey(User, on_delete = models.CASCADE)
-    numberOfItems = models.IntegerField()
+
+    numberOfItems = models.IntegerField(default=0)
 
 class Item(models.Model):
     ToDoList = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
