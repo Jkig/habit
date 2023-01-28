@@ -6,9 +6,26 @@
     <div>
         {% for item in toDo %}
             <div>
-                <h5>{{item.id}} -- {{item.thing}}</h5>
+                <h5>  * {{item.text}}</h5>
+                {% if item.complete %}
+                    <small>COMLETED</small>
+                {% endif %}
+                {% if item.startTime %}
+                    <small>start: {{item.startTime}}</small>
+                {% endif %}
+                {% if item.endTime %}
+                    <small>end: {{item.endTime}}</small>
+                {% endif %}
+                <hr>
             </div>
         {% endfor %}
+    </div>
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            
+            <input type="Text"/>
+        </form>
     </div>
 </div>
 

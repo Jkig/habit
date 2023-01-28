@@ -30,8 +30,8 @@ class Item(models.Model):
     # todolist = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
     text = models.CharField(max_length=300, null=True, blank=True)
     complete = models.BooleanField(default=False)
-    startTime = models.DateTimeField(null=True)
-    endTime = models.DateTimeField(null=True)
+    startTime = models.DateTimeField(null=True, blank=True)
+    endTime = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.text
