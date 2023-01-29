@@ -60,27 +60,17 @@ def registerNew(request):
 
 
 def list1(request):
-    # TODO: fix this up, so eveyone can 
-    # test for annother list by same user, and list from other user
+    # TODO: make it so that new users can interact...
+    #   show all of a user's lists as seperate things, maybe push a list of lists of items: [[thing1, thing2, thing2], [thingA], [thingB]]
 
-    '''
-    toDoList = ToDoList.objects.filter(user=request.user)
-    all_Items = toDoList.item_set.all()
-    '''
+    # I think try everything below, and except send to a page where we can get it started
 
     toDoList = ToDoList.objects.filter(user=request.user)# gets queryset of all things
 
-
-    # as_list = [i.item_set.all() for i in toDoList]
-    # all_Items = []
     all_Items = toDoList[0].item_set.all()
-    # for i in toDoList:
-        # all_Items.append(i.item_set.all())
+    for i in range(1,len(toDoList)):
+        all_Items = all_Items.union(toDoList[i].item_set.all())
 
-
-    # all_Items = toDoList.item_set.all() Works if i grabed toDoList from user, and user only has one, 
-    # #     ex: toDoList = ToDoList.objects.get(user=request.user)# makes above line work
-    # toDo = Item.objects.all() # every item in database lol
-    context = {'toDo': all_Items}# , "full_list": full_list}
+    context = {'toDo': all_Items}
     return render(request, "main/list.html", context)
 
