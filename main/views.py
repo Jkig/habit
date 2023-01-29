@@ -60,7 +60,26 @@ def registerNew(request):
 
 
 def list1(request):
-    toDo = Item.objects.all()  # TODO fix this, just display this user's stuff, also allow guests auto join..... 
-    context = {'toDo': toDo}
+    # TODO: fix this up, so eveyone can 
+    # test for annother list by same user, and list from other user
+
+    '''
+    toDoList = ToDoList.objects.filter(user=request.user)
+    all_Items = toDoList.item_set.all()
+    '''
+
+
+
+    # as_list = [i.item_set.all() for i in toDoList]
+    # all_Items = []
+    all_Items = toDoList[0].item_set.all()
+    # for i in toDoList:
+        # all_Items.append(i.item_set.all())
+
+
+    # all_Items = toDoList.item_set.all() Works if i grabed toDoList from user, and user only has one, 
+    # #     ex: toDoList = ToDoList.objects.get(user=request.user)# makes above line work
+    # toDo = Item.objects.all() # every item in database lol
+    context = {'toDo': all_Items}# , "full_list": full_list}
     return render(request, "main/list.html", context)
 
