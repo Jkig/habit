@@ -68,6 +68,7 @@ def list1(request):
     all_Items = toDoList.item_set.all()
     '''
 
+    toDoList = ToDoList.objects.filter(user=request.user)# gets queryset of all things
 
 
     # as_list = [i.item_set.all() for i in toDoList]

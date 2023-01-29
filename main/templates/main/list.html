@@ -4,6 +4,7 @@
 
 <div>
     <div>
+
         {% for item in toDo %}
             <div>
                 <h5>  * {{item.text}}</h5>
@@ -19,6 +20,7 @@
                 <hr>
             </div>
         {% endfor %}
+        
     </div>
     <div>
         <form method="POST" action="">
