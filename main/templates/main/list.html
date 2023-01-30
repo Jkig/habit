@@ -16,7 +16,11 @@
                 {% if item.endTime %}
                     <small>end: {{item.endTime}}</small>
                 {% endif %}
-                <a href="{% url 'delete-item' item.text %}">Delete</a>
+                <form method = 'POST' action="">
+                    {% csrf_token %}
+                    <a href="{% url 'delete-item' item.text %}">Delete</a>
+                </form>
+                <!--<a href="{% url 'delete-item' item.text %}">Delete</a>-->
                 <hr>
             </div>
         {% endfor %}

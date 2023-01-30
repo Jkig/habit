@@ -59,11 +59,15 @@ def registerNew(request):
     return render(request, 'main/login_registration.html', context)
 
 
-def deleteItem(request, text):
-    item = Item.objects.filter(text=text)
+def deleteItem(request, pk):
+    item = Item.objects.filter(text=pk)[0]
+    # messages.error(request, f'to-delete: {item.text}, {request.method}')
+    item.delete()
+    '''
     if request.method == "POST":
-        item.Delete()
+        item.delete()
         return redirect('/')
+    '''
     return redirect('/')
     
 
